@@ -1,5 +1,6 @@
 import { attachXray } from "./xray.js";
 import { zoomButton } from "./lightbox.js";
+import { sfx } from "/intros/shared/sound.js";
 
 const reduced = matchMedia("(prefers-reduced-motion: reduce)");
 const narrow = matchMedia("(max-width: 700px)");
@@ -289,6 +290,7 @@ export function createTerminal(buffer, options) {
   function toggleFilm(v) {
     const shot = filmOf(v);
     if (!shot) return false;
+    sfx.open();
     if (!v.films.has(v.at)) v.films.set(v.at, filmVideo(v, shot));
     const film = v.films.get(v.at);
     const { video } = film;
@@ -344,6 +346,7 @@ export function createTerminal(buffer, options) {
     if (!viewer) return false;
     const n = viewer.shots.length;
     if (n < 2) return false;
+    if (manual) sfx.tick();
     showShot(((k % n) + n) % n);
     restart(manual || Boolean(filmOf(viewer)));
     return true;
@@ -368,6 +371,7 @@ export function createTerminal(buffer, options) {
   function zoom(v) {
     const lightbox = options.lightbox;
     if (!lightbox || !v || v.at < 0 || viewer !== v) return false;
+    sfx.open();
     const inline = v.films.get(v.at)?.video;
     const start = { time: inline?.currentTime || 0, playing: Boolean(inline && !inline.paused) };
     if (start.playing) inline.pause();

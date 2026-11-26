@@ -1,4 +1,7 @@
 import { prefersStill, onWidthResize, rng } from "/intros/shared/common.js";
+import { sfx } from "/intros/shared/sound.js";
+
+sfx.init();
 
 const FONT_PX = 12;
 const CELL_W = 7.2;
@@ -1723,6 +1726,7 @@ function startBlock(at) {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
   block = { at, dpr, scene: makeTracking(at.w, at.h), start: now, last: now, grow: spring(0, 0.6, 1), phase: "seed", holdUntil: 0, holdMs: FACE_HOLD_MS };
   seedLine(at.seed, at.col, at.col + at.cols);
+  sfx.scan();
   showMachine(block);
   return true;
 }
@@ -2576,7 +2580,9 @@ function reach(hand, finger, key, now, hold) {
 }
 
 function pressKey(code, shift = false) {
-  if (!wall || !keyboard?.fits || leaving) return;
+  if (!wall || leaving) return;
+  sfx.key(code, shift);
+  if (!keyboard?.fits) return;
   const key = keyboard.keys.get(code);
   if (!key) return;
   const now = performance.now();
@@ -3112,6 +3118,7 @@ function showPickerTheme() {
     drawPicker();
     return;
   }
+  sfx.tick();
   closeNow();
   abortBlock();
   useTheme(theme);
@@ -3138,6 +3145,7 @@ function openPicker() {
   picker.index = Math.max(0, picker.items.indexOf(visit.theme));
   placePicker();
   drawPicker();
+  sfx.open();
   loop();
 }
 
@@ -3146,7 +3154,10 @@ function closePicker(keep) {
   if (!p) return;
   picker = null;
   dropCaret(p.caret);
-  if (keep && p.original !== visit.theme) cmdSay(`:colorscheme ${visit.theme.name}`);
+  if (keep && p.original !== visit.theme) {
+    sfx.theme();
+    cmdSay(`:colorscheme ${visit.theme.name}`);
+  }
   if (!keep && p.original !== visit.theme) {
     closeNow();
     abortBlock();
@@ -4066,6 +4077,7 @@ async function leave(href) {
   setHover(null);
   hideCursor();
   cmdSay("");
+  sfx.open();
   document.documentElement.classList.add("is-leaving");
   const now = performance.now();
   if (!tile) {

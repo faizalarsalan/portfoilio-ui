@@ -53,24 +53,47 @@ body {
 }
 
 .brand::after,
-.switch a::after {
+.switch a::after,
+.sfx-toggle::after {
   content: "";
   position: absolute;
-  inset: -16px -8px;
+  inset: -12px -6px;
 }
 
 .switch {
   position: absolute;
   right: var(--cell-w);
   top: calc(3 * var(--cell-h));
+  display: inline-flex;
+  align-items: center;
+  gap: calc(2.5 * var(--cell-w));
 }
 
-.switch a {
+.switch a,
+.sfx-toggle {
   position: relative;
   min-width: 0;
   min-height: 0;
   font: 400 12px/13px "Plex Mono", ui-monospace, monospace;
   letter-spacing: 0;
+}
+
+.sfx-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--chrome);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sfx-toggle.is-muted {
+  color: var(--dim);
+}
+
+.sfx-toggle:hover {
+  color: var(--ink);
 }
 
 .editor {

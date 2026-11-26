@@ -1,4 +1,5 @@
 import { createWorm } from "./worm.js";
+import { sfx } from "/intros/shared/sound.js";
 
 const KEY_CODES = [
   ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal"],
@@ -319,6 +320,7 @@ export function createWatch({ layer, deskHost, eyeHost, buffer, status, onState,
   }
 
   function press(code, shift = false) {
+    sfx.key(code, shift);
     if (!kb) return;
     const key = kb.keys.get(code);
     if (!key) return;

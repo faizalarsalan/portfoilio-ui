@@ -6,6 +6,9 @@ import { createTerminal } from "./terminal.js";
 import { createBlueprint } from "./blueprint.js";
 import { createTips } from "./tip.js";
 import { createLightbox } from "./lightbox.js";
+import { sfx } from "/intros/shared/sound.js";
+
+sfx.init();
 
 const $ = (selector) => document.querySelector(selector);
 const make = (tag, className, text) => {
@@ -123,6 +126,7 @@ function applyTheme(name, remember = false) {
   wheel?.recolor();
   bar?.recolor();
   if (remember) {
+    sfx.theme();
     try {
       localStorage.setItem(THEME_KEY, currentTheme);
     } catch {}
@@ -629,6 +633,7 @@ function open(entry) {
 }
 
 function openDrawer() {
+  sfx.open();
   editor.classList.add("is-tree-open");
   tabline.setAttribute("aria-expanded", "true");
   tabToggle.textContent = "close ↑";
@@ -637,6 +642,7 @@ function openDrawer() {
 }
 
 function closeDrawer() {
+  if (editor.classList.contains("is-tree-open")) sfx.tick();
   editor.classList.remove("is-tree-open");
   tabline.setAttribute("aria-expanded", "false");
   tabToggle.textContent = "click to view";
@@ -860,6 +866,7 @@ const paintDen = () => {
 };
 paintDen();
 den.addEventListener("click", () => {
+  sfx.tick();
   wormOn = !wormOn;
   paintDen();
   watch?.setWorm(wormOn);
@@ -885,9 +892,11 @@ wheel = createWheel(wheelHost, {
   initial: Math.max(0, items.findIndex((item) => item.entry === initialItem)),
   onChange(item) {
     tabFile.textContent = `/${item.entry.kind === "project" ? item.entry.id : item.label}`;
+    if (booted) sfx.tick();
   },
   onCommit(item) {
     if (!booted) return;
+    sfx.open();
     open(child?.parent === item.entry.id ? child : item.entry);
     const center = wheel.centerOf();
     if (center) watch?.focus(center.x, center.y);
