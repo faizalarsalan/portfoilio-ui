@@ -25,7 +25,7 @@ function ensureContext() {
   master.connect(comp);
   comp.connect(ctx.destination);
 
-  const length = Math.floor(ctx.sampleRate * 0.08);
+  const length = Math.floor(ctx.sampleRate * 1.8);
   noiseBuffer = ctx.createBuffer(1, length, ctx.sampleRate);
   const data = noiseBuffer.getChannelData(0);
   for (let i = 0; i < length; i++) data[i] = Math.random() * 2 - 1;
@@ -37,6 +37,22 @@ function ready() {
   const ac = ensureContext();
   if (!ac || ac.state !== "running") return null;
   return ac;
+}
+
+function withReady(fn) {
+  if (muted || document.hidden) return;
+  const ua = navigator.userActivation;
+  if (!unlocked && !(ua?.isActive || ua?.hasBeenActive)) return;
+  unlocked = true;
+  const ac = ensureContext();
+  if (!ac) return;
+  if (ac.state === "running") {
+    fn(ac);
+  } else if (ac.state === "suspended") {
+    ac.resume().then(() => {
+      if (!muted && !document.hidden && ac.state === "running") fn(ac);
+    }).catch(() => {});
+  }
 }
 
 function paintButtons() {
@@ -92,6 +108,8 @@ function playTone(ac, t, type, f0, f1, dur, vol) {
 export const sfx = {
   init() {
     paintButtons();
+    const ua = navigator.userActivation;
+    if (!muted && (ua?.isActive || ua?.hasBeenActive)) unlock();
     const wake = () => unlock();
     window.addEventListener("pointerdown", wake, { capture: true, passive: true });
     window.addEventListener("keydown", wake, { capture: true, passive: true });
@@ -117,13 +135,11 @@ export const sfx = {
     unlock();
     if (master && ctx) master.gain.setValueAtTime(muted ? 0 : 0.18, ctx.currentTime);
     paintButtons();
-    if (!muted) {
-      const ac = ensureContext();
-      if (ac) {
-        if (ac.state === "suspended") ac.resume().then(() => this.open()).catch(() => {});
-        else this.open();
-      }
-    }
+    if (!muted) withReady((ac) => {
+      const t = ac.currentTime;
+      playTone(ac, t, "sine", 340, 510, 0.045, 0.12);
+      playTone(ac, t + 0.028, "sine", 520, 640, 0.045, 0.09);
+    });
   },
 
   key(code = "", shift = false) {
@@ -164,19 +180,19 @@ export const sfx = {
   },
 
   open() {
-    const ac = ready();
-    if (!ac) return;
-    const t = ac.currentTime;
-    playTone(ac, t, "sine", 340, 510, 0.045, 0.12);
-    playTone(ac, t + 0.028, "sine", 520, 640, 0.045, 0.09);
+    withReady((ac) => {
+      const t = ac.currentTime;
+      playTone(ac, t, "sine", 340, 510, 0.045, 0.12);
+      playTone(ac, t + 0.028, "sine", 520, 640, 0.045, 0.09);
+    });
   },
 
   theme() {
-    const ac = ready();
-    if (!ac) return;
-    const t = ac.currentTime;
-    playTone(ac, t, "sine", 440, 440, 0.08, 0.09);
-    playTone(ac, t + 0.03, "sine", 659.25, 659.25, 0.09, 0.08);
+    withReady((ac) => {
+      const t = ac.currentTime;
+      playTone(ac, t, "sine", 440, 440, 0.08, 0.09);
+      playTone(ac, t + 0.03, "sine", 659.25, 659.25, 0.09, 0.08);
+    });
   },
 
   scan() {
@@ -184,5 +200,87 @@ export const sfx = {
     if (!ac) return;
     const t = ac.currentTime;
     playTone(ac, t, "sine", 920, 1240, 0.042, 0.07);
+  },
+
+  calDay(level = 1) {
+    const ac = ready();
+    if (!ac) return;
+    const t = ac.currentTime;
+    const base = 420 + level * 110;
+    playTone(ac, t, "sine", base, base * 1.15, 0.024, 0.04 + level * 0.012);
+  },
+
+  enter() {
+    withReady((ac) => {
+      const t = ac.currentTime;
+      playNoise(ac, t, 1800, 1.8, 0.022, 0.2);
+      playTone(ac, t, "triangle", 220, 330, 0.08, 0.14);
+      playTone(ac, t + 0.045, "sine", 440, 660, 0.16, 0.1);
+    });
+  },
+
+  ripple() {
+    withReady((ac) => {
+      const t = ac.currentTime;
+      const steps = 8;
+      for (let k = 0; k < steps; k++) {
+        const at = t + k * 0.068;
+        const f = 920 - k * 65;
+        playNoise(ac, at, 1400 + k * 140, 3.0, 0.03, 0.075 * (1 - k * 0.08));
+        playTone(ac, at, "sine", f, f * 0.85, 0.045, 0.045 * (1 - k * 0.07));
+      }
+    });
+  },
+
+  dive(dur = 1.55) {
+    withReady((ac) => {
+      const t = ac.currentTime;
+      if (noiseBuffer) {
+        const src = ac.createBufferSource();
+        src.buffer = noiseBuffer;
+        const filter = ac.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(160, t);
+        filter.frequency.exponentialRampToValueAtTime(2400, t + dur * 0.72);
+        filter.frequency.exponentialRampToValueAtTime(420, t + dur);
+        filter.Q.value = 1.6;
+        const gain = ac.createGain();
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.linearRampToValueAtTime(0.18, t + dur * 0.25);
+        gain.gain.linearRampToValueAtTime(0.24, t + dur * 0.75);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+        src.connect(filter);
+        filter.connect(gain);
+        gain.connect(master);
+        src.start(t);
+        src.stop(t + dur + 0.02);
+      }
+      const sub = ac.createOscillator();
+      sub.type = "sine";
+      sub.frequency.setValueAtTime(65, t);
+      sub.frequency.exponentialRampToValueAtTime(145, t + dur * 0.65);
+      sub.frequency.exponentialRampToValueAtTime(48, t + dur);
+      const subGain = ac.createGain();
+      subGain.gain.setValueAtTime(0.0001, t);
+      subGain.gain.linearRampToValueAtTime(0.2, t + dur * 0.2);
+      subGain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      sub.connect(subGain);
+      subGain.connect(master);
+      sub.start(t);
+      sub.stop(t + dur + 0.02);
+
+      const shimmer = ac.createOscillator();
+      shimmer.type = "triangle";
+      shimmer.frequency.setValueAtTime(220, t);
+      shimmer.frequency.exponentialRampToValueAtTime(880, t + dur * 0.78);
+      const shimGain = ac.createGain();
+      shimGain.gain.setValueAtTime(0.0001, t);
+      shimGain.gain.linearRampToValueAtTime(0.08, t + dur * 0.45);
+      shimGain.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.96);
+      shimmer.connect(shimGain);
+      shimGain.connect(master);
+      shimmer.start(t);
+      shimmer.stop(t + dur + 0.02);
+    });
   },
 };

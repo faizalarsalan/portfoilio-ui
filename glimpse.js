@@ -4046,6 +4046,7 @@ function zoomInto() {
     const ease = (x) => (x < 0.5 ? 8 * x ** 4 : 1 - (-2 * x + 2) ** 4 / 2);
     tile.zoom = { origin: [p.x, p.y], scale: 1 };
     startDive([p.x, p.y], start, p.rp);
+    sfx.dive(DIVE.ms / 1000);
     const grow = (now) => {
       if (!tile?.zoom) {
         resolve();
@@ -4077,7 +4078,7 @@ async function leave(href) {
   setHover(null);
   hideCursor();
   cmdSay("");
-  sfx.open();
+  sfx.enter();
   document.documentElement.classList.add("is-leaving");
   const now = performance.now();
   if (!tile) {
@@ -4096,6 +4097,7 @@ async function leave(href) {
     return;
   }
   const reach = Math.hypot(wall.width, wall.height);
+  sfx.ripple();
   for (let r = 0; r < wall.rows; r++) {
     for (let c = 0; c < wall.cols; c++) {
       const i = r * wall.cols + c;

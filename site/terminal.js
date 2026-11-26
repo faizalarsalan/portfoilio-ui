@@ -565,6 +565,8 @@ export function createTerminal(buffer, options) {
         head?.classList.remove("is-head");
         head = cal.cells[k];
         head.classList.add("is-on", "is-head");
+        const lvl = Number(head.className.match(/\bl([1-4])\b/)?.[1] || 0);
+        if (lvl) sfx.calDay(lvl);
         const rect = head.getBoundingClientRect();
         if (rect.width) options.watch?.focus(rect.left + rect.width / 2, rect.top + rect.height / 2);
         await sleep(CAL.day);
