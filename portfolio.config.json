@@ -4,12 +4,12 @@
     "barTitle": "FAIZ ARSALAN",
     "terminalUser": "faiz",
     "domain": "brandbear.studio",
-    "tagline": "shopify, cro, d2c storefronts.",
+    "tagline": "shopify, cro, video ai systems.",
     "github": "faizalarsalan",
     "storagePrefix": "faiz"
   },
   "about": {
-    "bio": "Shopify & eCommerce developer with 2+ years building high-converting D2C storefronts in Liquid, JavaScript, TypeScript, and CRO systems — founder of BrandBear Studio.",
+    "bio": "Shopify & eCommerce developer and builder of VideoAI Engine — crafting high-converting D2C storefronts in Liquid/JS/TypeScript and autonomous code-to-video pipelines at BrandBear Studio.",
     "extra": "Bangalore, India · BrandBear Studio"
   },
   "links": [
@@ -40,7 +40,7 @@
       "title": "Founder & Lead Developer",
       "org": "BrandBear Studio",
       "where": "Bangalore, India",
-      "desc": "Building custom Shopify themes, CRO-engineered product funnels, and full-stack brand websites — 27+ brands launched across D2C, luxury, real estate, and B2B.",
+      "desc": "Building custom Shopify themes, CRO-engineered product funnels, autonomous video tooling (VideoAI Engine), and full-stack brand sites — 27+ brands launched.",
       "url": "https://brandbear.vercel.app/"
     },
     {
@@ -60,6 +60,87 @@
   ],
   "projects": [
     {
+      "name": "VideoAI Engine",
+      "tag": "AI Video · HyperFrames · FFmpeg",
+      "desc": "Code-first autonomous video generation & rendering engine turning HTML/CSS/GSAP, Whisper timing, and neural TTS into deterministic 16:9 & 9:16 MP4s.",
+      "long": "A programmatic video generation pipeline integrating HyperFrames, Headless Chromium, GSAP 3.15, FFmpeg 9.1, local Whisper (faster-whisper + whisper.cpp), and Edge-TTS. Eliminates manual NLE editing by automating word-level speech alignment, multi-resolution layout rendering (1920x1080 & 1080x1920), and headless H.264 composition with zero per-render API fees.",
+      "githubRepo": "",
+      "shots": [
+        {
+          "file": "shots/videoai-desktop-core.jpg",
+          "video": "shots/videoai-desktop-loop.mp4",
+          "kind": "film",
+          "duration": 35,
+          "label": "desktop 16:9 loop (35s)",
+          "alt": "VideoAI Engine 1080p desktop hero render loop"
+        },
+        {
+          "file": "shots/videoai-mobile-core.jpg",
+          "video": "shots/videoai-mobile-loop.mp4",
+          "kind": "film",
+          "duration": 35,
+          "label": "mobile 9:16 loop (35s)",
+          "alt": "VideoAI Engine vertical mobile hero render loop"
+        },
+        {
+          "file": "shots/videoai-desktop-hero.jpg",
+          "label": "desktop scene 2 — cognitive core",
+          "alt": "VideoAI Engine desktop cognitive core frame"
+        },
+        {
+          "file": "shots/videoai-desktop-core.jpg",
+          "label": "desktop scene 3 — quantum architecture",
+          "alt": "VideoAI Engine desktop quantum architecture frame"
+        },
+        {
+          "file": "shots/videoai-mobile-hero.jpg",
+          "label": "mobile 9:16 — cognitive shift",
+          "alt": "VideoAI Engine mobile vertical cognitive shift frame"
+        },
+        {
+          "file": "shots/videoai-mobile-core.jpg",
+          "label": "mobile 9:16 — velocity & scale",
+          "alt": "VideoAI Engine mobile vertical quantum core frame"
+        }
+      ],
+      "stack": [
+        "Python",
+        "HyperFrames",
+        "GSAP",
+        "FFmpeg",
+        "Whisper",
+        "Chromium",
+        "Node.js",
+        "Edge-TTS"
+      ],
+      "results": [
+        [
+          "velocity",
+          "~10x faster turnaround vs traditional NLEs (Premiere / After Effects)"
+        ],
+        [
+          "render",
+          "~2-3x realtime 1080p 30fps via hardware H.264 headless Chrome stepping"
+        ],
+        [
+          "sync",
+          "<50ms word-onset alignment using local faster-whisper & whisper.cpp"
+        ],
+        [
+          "formats",
+          "simultaneous 16:9 (1920x1080) & 9:16 (1080x1920) zero-reframe output"
+        ],
+        [
+          "cost",
+          "$0/render — 100% self-hosted (Whisper.cpp + FFmpeg + Edge-TTS + HyperFrames)"
+        ]
+      ],
+      "url": "",
+      "created": "2026-11-20",
+      "pushed": "2026-11-20",
+      "files": 105
+    },
+    {
       "name": "Predator Perfume",
       "tag": "Shopify · Luxury D2C",
       "desc": "Luxury single-product Shopify storefront for a 1M+ influencer audience — 3.7% CVR (2x avg) and sub-2s load.",
@@ -74,6 +155,20 @@
         "JavaScript",
         "Playwright",
         "CRO"
+      ],
+      "results": [
+        [
+          "cvr",
+          "3.7% conversion rate (2x D2C fragrance industry average)"
+        ],
+        [
+          "speed",
+          "sub-2s page load with custom-coded single-SKU Shopify architecture"
+        ],
+        [
+          "qa",
+          "Playwright E2E tests covering cart and checkout flows post-launch"
+        ]
       ],
       "url": "https://predatorperfume.com",
       "created": "2024-06-01",
@@ -135,6 +230,16 @@
         "JavaScript",
         "CSS"
       ],
+      "results": [
+        [
+          "revenue",
+          "+25% revenue lift above Month 3 launch projection"
+        ],
+        [
+          "retain",
+          "18% subscription rate with reduced ~80% bounce rate"
+        ]
+      ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2024-02-01",
       "pushed": "2024-11-20"
@@ -176,6 +281,16 @@
         "Liquid",
         "JavaScript"
       ],
+      "results": [
+        [
+          "aov",
+          "+25% AOV increase via PDP bundle recommendation engine"
+        ],
+        [
+          "repeat",
+          "+33% repeat customer rate (rebuilt from 0.8% CVR baseline)"
+        ]
+      ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2023-11-01",
       "pushed": "2024-09-01"
@@ -193,6 +308,12 @@
         "Liquid",
         "CRO",
         "CSS"
+      ],
+      "results": [
+        [
+          "cvr",
+          "+28% CVR lift and +22% revenue in first 60 days post-launch"
+        ]
       ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2023-08-01",
@@ -212,6 +333,12 @@
         "HTML",
         "CSS"
       ],
+      "results": [
+        [
+          "cvr",
+          "+19% CVR (from <1%) and +27% return customer rate"
+        ]
+      ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2023-05-01",
       "pushed": "2024-03-20"
@@ -230,6 +357,12 @@
         "CSS",
         "CRO"
       ],
+      "results": [
+        [
+          "leads",
+          "4x lead volume within 60 days (+60% qualified enquiries)"
+        ]
+      ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2023-02-01",
       "pushed": "2024-01-10"
@@ -247,6 +380,12 @@
         "HTML",
         "CSS",
         "CRO"
+      ],
+      "results": [
+        [
+          "leads",
+          "3x B2B leads in under 3 months (+45% RFQ enquiries)"
+        ]
       ],
       "url": "https://brandbear.vercel.app/#work",
       "created": "2022-11-01",

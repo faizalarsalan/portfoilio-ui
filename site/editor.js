@@ -319,6 +319,7 @@ function projectSpec(project) {
     shots: project.images.map((image, index) => ({ ...image, repo: project.repo, file: image.file, name: image.label || fileLabel(image, index) })),
     blocks: [
       { cmd: `fetch ${project.repo}`, out },
+      ...(project.results?.length ? [{ cmd: "cat results.md", out: project.results.map(([k, v]) => ({ segments: [[pad(k), "t-key"], v] })) }] : []),
       ...(project.images.length ? [{ cmd: "ls shots/", viewer: true }] : []),
       ...(url ? [{ cmd: `open ${url.replace(/^https?:\/\//, "")}`, link: { text: url.replace(/^https?:\/\//, ""), href: url } }] : []),
     ],

@@ -187,12 +187,24 @@ const projects = CONFIG.projects.map((p) => {
   if (p.more) MORE.push(id);
   const full = p.githubRepo || (p.url?.startsWith("https://github.com/") ? p.url.replace("https://github.com/", "").replace(/\/$/, "") : null);
   const facts = repoFacts(full);
-  const images = (p.shots || []).map((s, i) => ({
-    file: s.startsWith("shots/") ? s : `shots/${path.basename(s)}`,
-    source: s,
-    alt: `${p.name} screenshot ${i + 1}`,
-    xray: false,
-  }));
+  const images = (p.shots || []).map((s, i) => {
+    if (typeof s === "string") {
+      return {
+        file: s.startsWith("shots/") ? s : `shots/${path.basename(s)}`,
+        source: s,
+        alt: `${p.name} screenshot ${i + 1}`,
+        xray: false,
+      };
+    }
+    const f = s.file.startsWith("shots/") ? s.file : `shots/${path.basename(s.file)}`;
+    return {
+      ...s,
+      file: f,
+      source: s.source || f,
+      alt: s.alt || `${p.name} screenshot ${i + 1}`,
+      xray: Boolean(s.xray),
+    };
+  });
   const lines = [
     `# ${p.name}`,
     "",
@@ -226,6 +238,7 @@ const projects = CONFIG.projects.map((p) => {
     counts: {},
     github: full ? `https://github.com/${full}` : null,
     stack: p.stack || [],
+    results: p.results || [],
     images,
     lines,
   };
