@@ -245,27 +245,6 @@
       "pushed": "2024-11-20"
     },
     {
-      "name": "Ashiya Makeover",
-      "tag": "Next.js · TypeScript",
-      "desc": "Full-stack Next.js and TypeScript brand booking experience with interactive wedding offer calculator and galleries.",
-      "long": "Built a Next.js and TypeScript brand website featuring an interactive wedding package and discount walkthrough calculator, before-and-after showcases, Instagram gallery, reviews, and structured WhatsApp booking summary generation.",
-      "githubRepo": "faizalarsalan/ashiya-makeover",
-      "shots": [
-        "shots/ashiya-makeover.svg"
-      ],
-      "stack": [
-        "TypeScript",
-        "Next.js",
-        "React",
-        "CSS"
-      ],
-      "url": "https://github.com/faizalarsalan/ashiya-makeover",
-      "created": "2026-11-24",
-      "pushed": "2026-11-24",
-      "files": 41,
-      "commits": 10
-    },
-    {
       "name": "Bitamin Naturals",
       "tag": "Wellness · AOV System",
       "desc": "Trust-first wellness CRO rebuild achieving +25% AOV and +33% repeat rate via product-page bundle flows.",

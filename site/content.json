@@ -1,6 +1,6 @@
 {
  "owner": "faizalarsalan",
- "fetchedAt": "2026-11-26T17:30:20.401Z",
+ "fetchedAt": "2026-11-26T17:37:48.620Z",
  "about": {
   "repo": "faizalarsalan",
   "lines": [
@@ -368,56 +368,6 @@
     "Built with Shopify · Liquid · CRO · JavaScript · CSS",
     "",
     "[Visit](https://brandbear.vercel.app/#work)"
-   ]
-  },
-  {
-   "repo": "ashiya-makeover",
-   "url": "https://github.com/faizalarsalan/ashiya-makeover",
-   "description": "Full-stack Next.js and TypeScript brand booking experience with interactive wedding offer calculator and galleries.",
-   "tag": "Next.js · TypeScript",
-   "stars": null,
-   "language": "TypeScript",
-   "pushed": "2026-11-24",
-   "forks": null,
-   "watchers": null,
-   "issues": null,
-   "license": null,
-   "created": "2026-11-24",
-   "branch": "main",
-   "commits": 10,
-   "files": 41,
-   "counts": {},
-   "github": "https://github.com/faizalarsalan/ashiya-makeover",
-   "stack": [
-    "TypeScript",
-    "Next.js",
-    "React",
-    "CSS"
-   ],
-   "results": [],
-   "images": [
-    {
-     "file": "shots/ashiya-makeover.svg",
-     "source": "shots/ashiya-makeover.svg",
-     "alt": "Ashiya Makeover screenshot 1",
-     "xray": false
-    }
-   ],
-   "lines": [
-    "# Ashiya Makeover",
-    "",
-    "\u0001IMG0\u0001",
-    "",
-    "### Full-stack Next.js and TypeScript brand booking experience with interactive wedding offer calculator and galleries.",
-    "",
-    "Built a Next.js and TypeScript brand website featuring an interactive",
-    "wedding package and discount walkthrough calculator, before-and-after",
-    "showcases, Instagram gallery, reviews, and structured WhatsApp booking",
-    "summary generation.",
-    "",
-    "Built with TypeScript · Next.js · React · CSS",
-    "",
-    "[Visit](https://github.com/faizalarsalan/ashiya-makeover)"
    ]
   },
   {

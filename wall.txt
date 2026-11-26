@@ -1,193 +1,247 @@
-import {
-  BRAND,
-  MYSTERY_PERKS,
-  PRIMARY_LOOKS,
-  SEASON_WINDOWS,
-  type LookOption,
-  type MysteryPerk,
-  type WeddingSeasonWindow,
-} from "./brand-data";
-export const SQUAD_LOOK_PRICE = 3499;
-export const HALDI_COMBO_PRICE = 5499;
-export const EXTRA_500_PERK_VALUE = 500;
-export type OfferConfigState = {
-  seasonId: string;
-  lookId: string;
-  includeHaldiCombo: boolean;
-  squadCount: number;
-  revealedPerkIndex: number | null;
+"""
+VIDEOAI Master Pipeline
+Automates the complete AI Video creation cycle:
+  Script Text
+    │
+    ▼ (TTS Engine - Edge-TTS / gTTS / pyttsx3)
+  Audio Voiceover (.mp3)
+    │
+    ▼ (Whisper Engine - faster-whisper / whisper-cli)
+  Word-level & Subtitle Timestamps (.json / .srt)
+    │
+    ▼ (HyperFrames Engine - HTML + CSS + GSAP)
+  Animated Visual Composition
+    │
+    ▼ (Chrome BeginFrame Capture + FFmpeg Encoding)
+  Rendered Visual Video (.mp4)
+    │
+    ▼ (FFmpeg Engine - Audio Muxing & Assembly)
+  Final Master Video in EXPORT/
+"""
+import os
+import sys
+import time
+from pathlib import Path
+from typing import Optional, Dict, Any, List
+from . import tts_engine
+from . import transcribe_engine
+from . import ffmpeg_engine
+from . import hyperframes_engine
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+EXPORT_DIR = PROJECT_ROOT / "EXPORT"
+RAW_FOOTAGE_DIR = PROJECT_ROOT / "RAW FOOTAGE"
+def run_full_pipeline(
+    script_text: str,
+    title: str = "AI Video Generation",
+    output_filename: str = "final_video.mp4",
+    voice: str = tts_engine.DEFAULT_VOICE,
+    tts_provider: str = "edge-tts",
+    whisper_model: str = "tiny",
+    theme: str = "dark",
+    background_video: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Executes the entire video creation pipeline from text script to final MP4 video.
+    """
+    start_time = time.time()
+    EXPORT_DIR.mkdir(parents=True, exist_ok=True)
+    slug = "".join(c if c.isalnum() else "_" for c in title.lower())[:30]
+    work_dir = PROJECT_ROOT / "compositions" / f"run_{slug}"
+    work_dir.mkdir(parents=True, exist_ok=True)
+    audio_path = str(work_dir / "voiceover.mp3")
+    visual_video_path = str(work_dir / "visual_only.mp4")
+    final_output_path = str(EXPORT_DIR / output_filename)
+    print("\n" + "=" * 60)
+    print(f"🎬 VIDEOAI ENGINE: STARTING PRODUCTION FOR '{title}'")
+    print("=" * 60)
+    # ----------------------------------------------------
+    # Step 1: Text-to-Speech (TTS)
+    # ----------------------------------------------------
+    print("\n[Step 1/5] Synthesizing Voiceover with TTS...")
+    tts_engine.synthesize(
+"""
+HyperFrames Video Generation & Rendering Engine
+Programmatically generates HTML+CSS+GSAP video compositions and compiles them to deterministic MP4.
+"""
+import os
+import sys
+import json
+import subprocess
+from pathlib import Path
+from typing import List, Dict, Any, Optional
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+DEFAULT_BROWSER_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
+DEFAULT_WHISPER_PATH = str(PROJECT_ROOT / "bin" / "whisper-cli.exe")
+DEFAULT_FFMPEG_DIR = r"C:\Users\Faizt\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-9.1-full_build\bin"
+def get_hyperframes_env() -> Dict[str, str]:
+    """Build process environment with required paths for Hyperframes and Chrome."""
+    env = os.environ.copy()
+    bin_dir = str(PROJECT_ROOT / "bin")
+    # Ensure FFmpeg and project bin are in PATH
+    path_parts = [bin_dir, DEFAULT_FFMPEG_DIR, env.get("PATH", "")]
+    env["PATH"] = ";".join(path_parts)
+    env["HYPERFRAMES_BROWSER_PATH"] = DEFAULT_BROWSER_PATH
+    env["HYPERFRAMES_WHISPER_PATH"] = DEFAULT_WHISPER_PATH
+    env["HYPERFRAMES_SKIP_SKILLS"] = "1"
+    return env
+def create_composition(
+    comp_dir: str,
+    title: str,
+    duration: float = 10.0,
+    subtitles: Optional[List[Dict[str, Any]]] = None,
+    theme: str = "dark",
+    width: int = 1920,
+    height: int = 1080,
+    background_video: Optional[str] = None
+) -> str:
+    """
+    Generate an HTML/GSAP composition directory ready for HyperFrames preview & rendering.
+    :param comp_dir: Target directory path
+    :param title: Video title text
+    :param duration: Total video duration in seconds
+    :param subtitles: List of subtitle segments [{'start': 0.0, 'end': 2.0, 'text': '...'}]
+    :param theme: Visual theme ('dark', 'cyberpunk', 'clean', 'gradient')
+    :param width: Resolution width
+    :param height: Resolution height
+    :param background_video: Optional relative or absolute path to a background video clip
+    :return: Absolute path to the composition directory
+    """
+    comp_path = Path(comp_dir).resolve()
+    comp_path.mkdir(parents=True, exist_ok=True)
+    # Subtitle timeline animation generator
+    sub_spans_html = []
+    gsap_animations = []
+    if subtitles:
+        for idx, sub in enumerate(subtitles):
+            s_id = f"sub_{idx}"
+            s_start = sub["start"]
+            s_end = sub["end"]
+            s_dur = max(0.2, s_end - s_start)
+            s_text = sub["text"]
+#!/usr/bin/env python3
+"""
+VIDEOAI CLI - Master Video Engine
+Integrated CLI for HyperFrames, FFmpeg, Whisper, and TTS.
+"""
+import sys
+import argparse
+from pathlib import Path
+# Add project root to path
+PROJECT_ROOT = Path(__file__).parent.resolve()
+sys.path.insert(0, str(PROJECT_ROOT))
+from src import tts_engine
+from src import transcribe_engine
+from src import ffmpeg_engine
+from src import hyperframes_engine
+from src import pipeline
+def cmd_doctor(args):
+    """Run diagnostics on all engine subsystems."""
+    print("=" * 60)
+    print("🔍 VIDEOAI ENGINE DIAGNOSTICS")
+    print("=" * 60)
+    # 1. FFmpeg
+    try:
+        f_exe, p_exe = ffmpeg_engine.find_ffmpeg_binaries()
+        print(f"  [✓] FFmpeg:       {f_exe}")
+        print(f"  [✓] FFprobe:      {p_exe}")
+    except Exception as e:
+        print(f"  [✗] FFmpeg:       {e}")
+    # 2. Whisper
+    whisper_cli = PROJECT_ROOT / "bin" / "whisper-cli.exe"
+    if whisper_cli.exists():
+        print(f"  [✓] Whisper CLI:  {whisper_cli}")
+    else:
+        print(f"  [✗] Whisper CLI:  Missing at {whisper_cli}")
+    tiny_model = PROJECT_ROOT / "models" / "ggml-tiny.en.bin"
+    base_model = PROJECT_ROOT / "models" / "ggml-base.en.bin"
+    print(f"  [{'✓' if tiny_model.exists() else '✗'}] GGML Tiny Model: {tiny_model}")
+    print(f"  [{'✓' if base_model.exists() else '✗'}] GGML Base Model: {base_model}")
+    try:
+        import faster_whisper
+        print("  [✓] Faster-Whisper: Installed in Python")
+    except ImportError:
+        print("  [✗] Faster-Whisper: Not installed")
+    # 3. TTS
+    try:
+        import edge_tts
+        print("  [✓] Edge-TTS:     Installed (Microsoft Neural Voices)")
+    except ImportError:
+        print("  [✗] Edge-TTS:     Not installed")
+    try:
+        import gtts
+        print("  [✓] gTTS:         Installed (Google TTS)")
+    except ImportError:
+        print("  [✗] gTTS:         Not installed")
+    try:
+        import pyttsx3
+        print("  [✓] pyttsx3:      Installed (Windows SAPI5 offline)")
+    except ImportError:
+import { createArchive } from "./archive.js";
+import { createWatch } from "./watch.js";
+import { createBar } from "./bar.js";
+import { createWheel } from "./wheel.js";
+import { createTerminal } from "./terminal.js";
+import { createBlueprint } from "./blueprint.js";
+import { createTips } from "./tip.js";
+import { createLightbox } from "./lightbox.js";
+const $ = (selector) => document.querySelector(selector);
+const make = (tag, className, text) => {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
 };
-export type CalculatedOffer = {
-  season: WeddingSeasonWindow;
-  primaryLook: LookOption;
-  totalLooksCount: number;
-  subtotal: number;
-  discountPercent: number;
-  tierLabel: string;
-  nextTierTip: string | null;
-  tierDiscountAmount: number;
-  extraCashDiscount: number;
-  totalSavings: number;
-  finalPrice: number;
-  perk: MysteryPerk | null;
-  promoCode: string;
-  whatsappUrl: string;
-  bookingSummaryText: string;
+const key = (value) => String(value).toLowerCase().replace(/[^a-z0-9]/g, "");
+const fmt = (value) => Math.round(value).toLocaleString("en-US").replace(/,/g, "'");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+const narrow = matchMedia("(max-width: 700px)");
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const editor = $(".editor");
+const wheelHost = $(".wheel");
+const buffer = $(".buffer");
+const winbar = $(".winbar");
+const tabline = $(".tabline");
+const tabFile = $(".tab-file");
+const tabToggle = $(".tab-toggle");
+const barHost = $(".bar");
+const cmdNode = $(".bar .cmd");
+const load = (url) =>
+  fetch(url).then((response) => {
+    if (!response.ok) throw new Error(`${url}: ${response.status}`);
+    return response.json();
+  });
+const [content, themeData, snapshot, stack, months] = await Promise.all([load("content.json"), load("/themes.json"), load("/github-snapshot.json"), load("stack.json").catch(() => null), load("months.json").catch(() => null)]);
+const themes = themeData.themes;
+const palettes = new Map(content.palettes.map((theme) => [key(theme.name), theme]));
+const days = snapshot.contributions.days;
+const fileLabel = (image, index) => {
+  const base = image.source.split("/").pop().split("?")[0];
+  if (!/^[0-9a-f-]{24,}(\.[a-z]+)?$/i.test(base)) return base;
+  return image.alt && image.alt.length <= 40 ? image.alt : `image ${index + 1}`;
 };
-export function formatINR(amount: number): string {
-  return `₹${Math.round(amount).toLocaleString("en-IN")}`;
-}
-export function calculateWeddingOffer(state: OfferConfigState): CalculatedOffer {
-  const season =
-    SEASON_WINDOWS.find((s) => s.id === state.seasonId) ?? SEASON_WINDOWS[0];
-  const primaryLook =
-    PRIMARY_LOOKS.find((l) => l.id === state.lookId) ?? PRIMARY_LOOKS[0];
-  const haldiAdd = state.includeHaldiCombo ? HALDI_COMBO_PRICE : 0;
-  const squadAdd = state.squadCount * SQUAD_LOOK_PRICE;
-  const subtotal = primaryLook.basePrice + haldiAdd + squadAdd;
-  const totalLooksCount =
-    1 + (state.includeHaldiCombo ? 1 : 0) + state.squadCount;
-  // Tier rules:
-  // 1 look = 15% Welcome Offer
-  // 2 looks = 20% Combo Offer
-  // 3+ looks = 25% Full Dulhan Bundle
-  let discountPercent = 15;
-  let tierLabel = "15% Welcome Bridal Offer";
-  let nextTierTip: string | null =
-    "Add Haldi/Engagement OR 1 Bridesmaid Look to jump to 20% OFF!";
-  if (totalLooksCount === 2) {
-    discountPercent = 20;
-    tierLabel = "20% Dual-Look Combo Offer";
-    nextTierTip =
-export const BRAND = {
-  name: "Ashiya Makeover",
-  monogram: "A",
-  handle: "@makeupby_ashiyanaaz",
-  city: "Hazaribagh, Jharkhand",
-  tagline: "Your beauty, my passion — Let's create magic.",
-  phoneDisplay: "+91 92631 84142",
-  phoneRaw: "919263184142",
-  whatsappBase: "https://wa.me/919263184142",
-  instagramUrl: "https://www.instagram.com/makeupby_ashiyanaaz/",
-  threadsUrl: "https://www.threads.com/@makeupby_ashiyanaaz",
-  followersCount: "125+",
-  postsCount: "21+",
+const hex = (value) => [1, 3, 5].map((k) => parseInt(value.slice(k, k + 2), 16));
+const LINK_SLOTS = [3, 4, 5, 8];
+const luminance = (value) => {
+  const [r, g, b] = hex(value).map((v) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 };
-export type LookOption = {
-  id: string;
-  name: string;
-  subtitle: string;
-  basePrice: number;
-  duration: string;
-  badge: string;
-  includes: string[];
+const contrast = (a, b) => {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
 };
-export const PRIMARY_LOOKS: LookOption[] = [
-  {
-    id: "signature-hd-bridal",
-    name: "Signature HD Dulhan",
-    subtitle: "Luminous dewy bridal base that glows in person & 4K lens",
-    basePrice: 14999,
-    duration: "3.5 hrs",
-    badge: "Most Loved",
-    includes: [
-      "Skin-first hydration & glass-glow prep",
-      "Waterproof HD base & customized undertone match",
-      "Bridal hairstyle + fresh floral gajra pinning",
-      "Lehenga & double dupatta draping + mink lashes",
-    ],
-  },
-  {
-    id: "royal-airbrush-bridal",
-    name: "Royal Airbrush Bridal",
-    subtitle: "Featherlight 18-hour sweat & tear-proof luxury finish",
-    basePrice: 19999,
-    duration: "4 hrs",
-    badge: "Luxury Choice",
-    includes: [
-      "Silicone/Airbrush long-wear bridal perfection",
-      "Custom eye artistry (cut-crease or soft smoky halo)",
-      "Intricate bridal bun/braid + jewelry setting",
-      "Free touch-up mini lipstick kit + lens application",
-    ],
-  },
-  {
-    id: "engagement-reception",
-    name: "Engagement & Reception Glam",
-    subtitle: "Soft champagne shimmer & sculpted glow for evening lights",
-    basePrice: 8999,
-    duration: "2.5 hrs",
-    badge: "Bestseller",
-    includes: [
-      "Soft-glam shimmer eyes & glossy rose/nude lips",
-      "Textured waves, sleek bun, or tiara hair setting",
-      "Gown/saree pinning & accessory placement",
-      "Complimentary faux lashes",
-    ],
-  },
-  {
-    id: "haldi-mehndi-dew",
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import confetti from "canvas-confetti";
-import {
-  CalendarHeart,
-  Check,
-  Copy,
-  Crown,
-  Heart,
-  MessageCircle,
-  Minus,
-  Plus,
-  Sparkles,
-  Wand2,
-} from "lucide-react";
-import {
-  MYSTERY_PERKS,
-  PRIMARY_LOOKS,
-  SEASON_WINDOWS,
-} from "@/lib/brand-data";
-import {
-  Sticker3DBow,
-  Sticker3DCompact,
-  Sticker3DGift,
-} from "./Soft3DStickers";
-import {
-  type CalculatedOffer,
-  type OfferConfigState,
-  HALDI_COMBO_PRICE,
-  SQUAD_LOOK_PRICE,
-  formatINR,
-} from "@/lib/offer-calculator";
-type Props = {
-  offerState: OfferConfigState;
-  setOfferState: React.Dispatch<React.SetStateAction<OfferConfigState>>;
-  calculated: CalculatedOffer;
-};
-// 52px incremental sticky offset keeps every earlier card's header badge + title 100% unclipped
-const STICKY_TOPS = [114, 166, 218, 270];
-const QUICK_JUMP_STEPS = [
-  { id: 0, label: "1 • Season" },
-  { id: 1, label: "2 • Look" },
-  { id: 2, label: "3 • Squad" },
-  { id: 3, label: "4 • Gift" },
-];
-export function WeddingOfferBuilder({
-  offerState,
-  setOfferState,
-  calculated,
-}: Props) {
-  const [copiedCode, setCopiedCode] = useState(false);
-  const [cardScales, setCardScales] = useState<number[]>([1, 1, 1, 1]);
-  const [cardDims, setCardDims] = useState<number[]>([1, 1, 1, 1]);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const anchorRefs = useRef<(HTMLDivElement | null)[]>([]);
-  useEffect(() => {
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-    let rafId = 0;
+const lab = (value) => {
+  const [r, g, b] = hex(value).map((v) => {
+    const c = v / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const f = (t) => (t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116);
+  const x = f((r * 0.4124 + g * 0.3576 + b * 0.1805) / 0.95047);
+  const y = f(r * 0.2126 + g * 0.7152 + b * 0.0722);
+  const z = f((r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883);
+  return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
 import React from 'react'
 const Card = ({ name, text, badge }) => {
   return (
