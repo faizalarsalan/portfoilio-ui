@@ -183,7 +183,7 @@ function markSeen() {
 document.addEventListener("visibilitychange", loadSeen);
 loadSeen();
 markSeen();
-const KEYS = { wide: "↑↓ project · ←→ shot · ↩ enter · : cmd", touch: "swipe the wheel · tap to open", closed: "tap ~/Projects ↓ to browse" };
+const KEYS = { wide: "↑↓ project · ←→ shot · ↩ enter · : cmd", touch: "swipe the wheel · tap to open", closed: "tap click to view to browse" };
 const paintKeys = () => bar.setKeys(narrow.matches ? (editor.classList.contains("is-tree-open") ? KEYS.touch : KEYS.closed) : matchMedia("(pointer: fine)").matches ? KEYS.wide : KEYS.touch);
 paintKeys();
 
@@ -630,7 +630,7 @@ function open(entry) {
 function openDrawer() {
   editor.classList.add("is-tree-open");
   tabline.setAttribute("aria-expanded", "true");
-  tabToggle.textContent = "↑";
+  tabToggle.textContent = "close ↑";
   paintKeys();
   requestAnimationFrame(() => wheel?.layout());
 }
@@ -638,7 +638,7 @@ function openDrawer() {
 function closeDrawer() {
   editor.classList.remove("is-tree-open");
   tabline.setAttribute("aria-expanded", "false");
-  tabToggle.textContent = "↓";
+  tabToggle.textContent = "click to view";
   paintKeys();
 }
 
