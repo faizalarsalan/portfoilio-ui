@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460">
+  <rect width="800" height="460" rx="10" fill="#0b0b0a"/>
+  <rect x="1" y="1" width="798" height="458" rx="9" fill="none" stroke="#262522" stroke-width="2"/>
+  <rect width="800" height="38" rx="10" fill="#141311"/>
+  <circle cx="24" cy="19" r="5" fill="#ff5f56"/>
+  <circle cx="42" cy="19" r="5" fill="#ffbd2e"/>
+  <circle cx="60" cy="19" r="5" fill="#27c93f"/>
+  <text x="400" y="23" text-anchor="middle" fill="#8b877c" font-family="monospace" font-size="12">predatorperfume.com — luxury single-sku storefront</text>
+  <text x="36" y="80" fill="#e7c58a" font-family="monospace" font-size="14">$ shopify theme check &amp;&amp; npx playwright test checkout.spec.ts</text>
+  <text x="36" y="112" fill="#ebe6db" font-family="monospace" font-size="13">Conversion rate: 3.7% CVR  (2x D2C fragrance industry average)</text>
+  <text x="36" y="136" fill="#7fd1a0" font-family="monospace" font-size="13">Performance: Sub-2s load · 1M+ creator launch (Sarthak Goel)</text>
+  <rect x="36" y="168" width="230" height="246" rx="6" fill="#12110f" stroke="#262522"/>
+  <text x="54" y="198" fill="#e7c58a" font-family="monospace" font-size="12">ARCHITECTURE</text>
+  <text x="54" y="228" fill="#ebe6db" font-family="monospace" font-size="12">● Dark editorial PDP</text>
+  <text x="54" y="254" fill="#ebe6db" font-family="monospace" font-size="12">● Scroll storytelling</text>
+  <text x="54" y="280" fill="#ebe6db" font-family="monospace" font-size="12">● Impulse checkout</text>
+  <text x="54" y="306" fill="#7fd1a0" font-family="monospace" font-size="12">✓ Playwright E2E</text>
+  <rect x="284" y="168" width="480" height="246" rx="6" fill="#12110f" stroke="#262522"/>
+  <text x="304" y="198" fill="#8fd0ee" font-family="monospace" font-size="12">CONVERSION LIFT BENCHMARK</text>
+  <polyline points="310,360 375,342 440,330 505,285 570,255 635,215 730,192" fill="none" stroke="#e7c58a" stroke-width="2.5"/>
+  <polyline points="310,378 375,372 440,368 505,360 570,356 635,350 730,346" fill="none" stroke="#7a766a" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="310" y="398" fill="#7a766a" font-family="monospace" font-size="11">Predator CVR: 3.7%   |   Industry Baseline: ~1.8%</text>
+</svg>

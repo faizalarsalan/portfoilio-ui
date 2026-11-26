@@ -77,8 +77,8 @@ const chroma = (value) => Math.hypot(lab(value)[1], lab(value)[2]);
 const mix = (a, b, t) => `#${hex(a).map((v, n) => Math.round(v * (1 - t) + hex(b)[n] * t).toString(16).padStart(2, "0")).join("")}`;
 
 const DEFAULT_THEME = "blackmoney";
-const THEME_KEY = "portfolio.scheme";
-const WORM_KEY = "portfolio.worm";
+const THEME_KEY = "faiz.scheme";
+const WORM_KEY = "faiz.worm";
 let currentTheme = DEFAULT_THEME;
 let openEntry = null;
 let booted = false;
@@ -147,7 +147,7 @@ const entries = [
   { id: "about", label: "whoami", kind: "about", tile: "about" },
   ...projectEntries.filter((entry) => !entry.parent),
   { id: "work", label: "work/", kind: "work", tile: "work" },
-  { id: "talks", label: "talks/", kind: "talks", tile: "talks" },
+  ...(content.talks?.length ? [{ id: "talks", label: "talks/", kind: "talks", tile: "talks" }] : []),
   ...(childrenOf("more").length ? [{ id: "more", label: "more/", kind: "more" }] : []),
   ...(stack ? [{ id: "stack", label: "stack/", kind: "stack", tile: "stack" }] : []),
   { id: "themes", label: "themes/", kind: "themes", tile: "themes" },
@@ -281,7 +281,7 @@ function refit() {
 const pad = (label) => label.padEnd(9);
 const num = (value) => fmt(value ?? 0).padStart(6);
 const fact = (label, value, extra = []) => ({ segments: [[pad(label), "t-key"], [num(value), "md-num"], ...extra] });
-const month = (iso) => iso.slice(0, 7);
+const month = (iso) => (iso ? iso.slice(0, 7) : "—");
 
 function starShare(stars) {
   const total = snapshot.stars?.total || 0;
@@ -310,7 +310,7 @@ function projectSpec(project) {
     ...Object.entries(project.counts || {}).map(([name, value]) => fact(name, value)),
     fact("files", project.files),
     { segments: [[pad("lang"), "t-key"], [project.language || "—", "md-code"], ...(project.license ? [["  " + project.license, "t-dim"]] : [])] },
-    { segments: [[pad("since"), "t-key"], project.created || "—", ["  pushed ", "t-dim"], project.pushed] },
+    { segments: [[pad("since"), "t-key"], project.created || "—", ...(project.pushed ? [["  pushed ", "t-dim"], project.pushed] : [])] },
   ];
   const url = project.url;
   return {
@@ -319,8 +319,8 @@ function projectSpec(project) {
     shots: project.images.map((image, index) => ({ ...image, repo: project.repo, file: image.file, name: image.label || fileLabel(image, index) })),
     blocks: [
       { cmd: `fetch ${project.repo}`, out },
-      { cmd: "ls shots/", viewer: true },
-      { cmd: `open ${url.replace(/^https:\/\//, "")}`, link: { text: url.replace(/^https:\/\//, ""), href: url } },
+      ...(project.images.length ? [{ cmd: "ls shots/", viewer: true }] : []),
+      ...(url ? [{ cmd: `open ${url.replace(/^https?:\/\//, "")}`, link: { text: url.replace(/^https?:\/\//, ""), href: url } }] : []),
     ],
   };
 }
@@ -504,10 +504,12 @@ function moreSpec() {
   const list = childrenOf("more").map((entry) => entry.data);
   const stars = list.reduce((sum, project) => sum + (project.stars || 0), 0);
   const { share, note } = starShare(stars);
+  const createdDates = list.map((project) => project.created).filter(Boolean).sort();
+  const pushedDates = list.map((project) => project.pushed).filter(Boolean).sort();
   const out = [
     fact("stars", stars, ["  ", ...gauge(share / 100, 17 + note.length), ...(note ? [[note, "t-dim"]] : [])]),
     fact("forks", list.reduce((sum, project) => sum + (project.forks || 0), 0)),
-    { segments: [[pad("since"), "t-key"], month(list.map((project) => project.created).sort()[0]), ["  pushed ", "t-dim"], month(list.map((project) => project.pushed).sort().at(-1))] },
+    { segments: [[pad("since"), "t-key"], month(createdDates[0]), ["  pushed ", "t-dim"], month(pushedDates.at(-1))] },
   ];
   return {
     cwd: "~/P",
@@ -551,8 +553,18 @@ function barView(entry) {
     return [["STARS", fmt(p.stars)], ["FORKS", fmt(p.forks ?? 0)], ["WATCH", fmt(p.watchers ?? 0)]];
   }
   if (entry.kind === "themes") return [["THEMES", String(themes.length)], ["BUILT-IN", String(themes.filter((theme) => theme.included).length)]];
-  if (entry.kind === "work") return [["ROLES", String((content.work || []).filter((item) => item.kind !== "talk").length)], ["SINCE", "2021"], ["NOW", "ALBY"]];
-  if (entry.kind === "talks") return [["TALKS", String((content.talks || []).length)], ["COUNTRIES", "4"], ["SINCE", "2022"]];
+  if (entry.kind === "work") {
+    const jobs = (content.work || []).filter((item) => item.kind !== "talk");
+    const years = jobs.flatMap((item) => (item.when || "").match(/\d{4}/g) || []).sort();
+    const nowOrg = (jobs.find((item) => /present/i.test(item.when || "")) || jobs[0])?.org || "—";
+    return [["ROLES", String(jobs.length)], ["SINCE", years[0] || "—"], ["NOW", nowOrg.toUpperCase().split(/\s+/)[0]]];
+  }
+  if (entry.kind === "talks") {
+    const talksList = content.talks || [];
+    const countries = new Set(talksList.map((t) => (t.place || "").split(", ").pop()).filter(Boolean)).size;
+    const years = talksList.flatMap((t) => (t.when || "").match(/\d{4}/g) || []).sort();
+    return [["TALKS", String(talksList.length)], ["COUNTRIES", String(countries)], ["SINCE", years[0] || "—"]];
+  }
   if (entry.kind === "more") return [["PROJECTS", String(childrenOf("more").length)]];
   if (entry.kind === "stack") return [["LANGS", String(stack.languages.length)], ["TOOLS", String(stack.tools.length)], ["AI", String(stack.ai?.length ?? 0)]];
   return [["REPOS", fmt(snapshot.stars.repositoryCount)], ["STARS", fmt(snapshot.stars.total)], ["FOLLOWERS", fmt(snapshot.followers)]];

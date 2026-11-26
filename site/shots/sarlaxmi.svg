@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460">
+  <rect width="800" height="460" rx="10" fill="#0d0b14"/>
+  <rect x="1" y="1" width="798" height="458" rx="9" fill="none" stroke="#252038" stroke-width="2"/>
+  <rect width="800" height="38" rx="10" fill="#151221"/>
+  <circle cx="24" cy="19" r="5" fill="#ff5f56"/>
+  <circle cx="42" cy="19" r="5" fill="#ffbd2e"/>
+  <circle cx="60" cy="19" r="5" fill="#27c93f"/>
+  <text x="400" y="23" text-anchor="middle" fill="#8880a6" font-family="monospace" font-size="12">sarlaxmi — full storefront build (platina theme)</text>
+  <text x="36" y="80" fill="#a97bff" font-family="monospace" font-size="14">$ shopify theme push --store sarlaxmi --live</text>
+  <text x="36" y="114" fill="#e2dcf2" font-family="monospace" font-size="13">Platina theme customization · custom Liquid sections &amp; snippets</text>
+  <text x="36" y="140" fill="#7ad9d0" font-family="monospace" font-size="13">AJAX integrations · Judge.me + metafield reviews · trust bar</text>
+  <rect x="36" y="172" width="728" height="242" rx="6" fill="#13101d" stroke="#252038"/>
+  <text x="58" y="206" fill="#c7b8f0" font-family="monospace" font-size="13">DELIVERY PIPELINE</text>
+  <text x="58" y="240" fill="#e2dcf2" font-family="monospace" font-size="12">01. Theme setup &amp; custom section schema architecture</text>
+  <text x="58" y="268" fill="#e2dcf2" font-family="monospace" font-size="12">02. Real-time AJAX product cards &amp; drawer state sync</text>
+  <text x="58" y="296" fill="#e2dcf2" font-family="monospace" font-size="12">03. Judge.me review widgets + Shopify metafield binding</text>
+  <text x="58" y="324" fill="#7ad9d0" font-family="monospace" font-size="12">04. Staging QA, Playwright checks &amp; live client launch</text>
+</svg>

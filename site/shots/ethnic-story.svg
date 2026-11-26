@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460">
+  <rect width="800" height="460" rx="10" fill="#0b1015"/>
+  <rect x="1" y="1" width="798" height="458" rx="9" fill="none" stroke="#1e2a36" stroke-width="2"/>
+  <rect width="800" height="38" rx="10" fill="#111820"/>
+  <circle cx="24" cy="19" r="5" fill="#ff5f56"/>
+  <circle cx="42" cy="19" r="5" fill="#ffbd2e"/>
+  <circle cx="60" cy="19" r="5" fill="#27c93f"/>
+  <text x="400" y="23" text-anchor="middle" fill="#6f8296" font-family="monospace" font-size="12">ethnicstory.shop — custom liquid sections &amp; cro</text>
+  <rect x="28" y="60" width="248" height="370" rx="6" fill="#0f151c" stroke="#1e2a36"/>
+  <text x="44" y="88" fill="#4cc9f0" font-family="monospace" font-size="13">SHOPIFY SECTIONS</text>
+  <text x="44" y="118" fill="#6ee7b7" font-family="monospace" font-size="12">● deal-of-week.liquid</text>
+  <text x="44" y="144" fill="#6ee7b7" font-family="monospace" font-size="12">● auto-scroll-bar.liquid</text>
+  <text x="44" y="170" fill="#6ee7b7" font-family="monospace" font-size="12">● floral-collection.liquid</text>
+  <text x="44" y="196" fill="#9fb4ff" font-family="monospace" font-size="12">● main-product.liquid</text>
+  <text x="44" y="222" fill="#ffa94d" font-family="monospace" font-size="12">● cart-drawer.js</text>
+  <rect x="294" y="60" width="478" height="370" rx="6" fill="#0f151c" stroke="#1e2a36"/>
+  <text x="312" y="92" fill="#9fb4ff" font-family="monospace" font-size="12">[AJAX Product API] fetching /products/{handle}.js ... 200 OK</text>
+  <text x="312" y="118" fill="#a9d6e5" font-family="monospace" font-size="12">[CRO] trust bar + restyled variant picker mounted</text>
+  <text x="312" y="144" fill="#d9e4ee" font-family="monospace" font-size="12">[PDP] return policy modal wired inside main-product.liquid</text>
+  <text x="312" y="170" fill="#ffa94d" font-family="monospace" font-size="12">[Integrations] Behold.so feed + Klaviyo flows active</text>
+  <text x="312" y="212" fill="#6ee7b7" font-family="monospace" font-size="12">✓ Custom Liquid storefront + CRO shipped end-to-end</text>
+</svg>

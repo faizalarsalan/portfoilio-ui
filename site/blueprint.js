@@ -456,7 +456,8 @@ export function createBlueprint(host, { points = 0, from = "", to = "", owner = 
 
   function drawHeader(c) {
     const { ink } = colors;
-    text(c, "PJ", d.x0, 18, 11, `rgba(${ink},0.95)`);
+    const monogram = owner ? (/\s/.test(owner) ? owner.split(/\s+/).map((w) => w[0]).join("") : owner).slice(0, 2).toUpperCase() : "FA";
+    text(c, monogram, d.x0, 18, 11, `rgba(${ink},0.95)`);
     const title = `${fmt(N)} points · 1 per contribution`;
     const dated = from ? `${title} · ${from.slice(0, 4)}` : title;
     c.font = '10px "Plex Mono", ui-monospace, monospace';
@@ -642,7 +643,7 @@ export function createBlueprint(host, { points = 0, from = "", to = "", owner = 
     c.strokeRect(x0 + 0.5, block + 0.5, x1 - x0 - 1, 45);
     c.fillStyle = `rgba(${dim},0.6)`;
     c.fillRect(x0, block + 17, x1 - x0, 1);
-    text(c, owner || "PJ", x0 + 6, block + 12, 10, `rgba(${ink},0.95)`);
+    text(c, owner || "FA", x0 + 6, block + 12, 10, `rgba(${ink},0.95)`);
     text(c, "scale 1:1", x1 - 6, block + 12, 8, `rgba(${dim},0.95)`, "right");
   }
 

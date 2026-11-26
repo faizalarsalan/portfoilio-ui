@@ -5,8 +5,9 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONFIG = JSON.parse(fs.readFileSync(path.join(ROOT, "portfolio.config.json"), "utf8"));
 const FETCH_GH = process.argv.includes("--fetch-github");
 
@@ -213,15 +214,15 @@ const projects = CONFIG.projects.map((p) => {
     tag: p.tag || null,
     stars: facts.stars ?? p.stars ?? null,
     language: facts.language ?? p.stack?.[0] ?? null,
-    pushed: facts.pushed ?? null,
-    forks: facts.forks ?? null,
-    watchers: facts.watchers ?? null,
-    issues: facts.issues ?? null,
-    license: facts.license ?? null,
-    created: facts.created ?? null,
-    branch: facts.branch ?? "main",
-    commits: facts.commits ?? null,
-    files: facts.files ?? null,
+    pushed: facts.pushed ?? p.pushed ?? null,
+    forks: facts.forks ?? p.forks ?? null,
+    watchers: facts.watchers ?? p.watchers ?? null,
+    issues: facts.issues ?? p.issues ?? null,
+    license: facts.license ?? p.license ?? null,
+    created: facts.created ?? p.created ?? null,
+    branch: facts.branch ?? p.branch ?? "main",
+    commits: facts.commits ?? p.commits ?? null,
+    files: facts.files ?? p.files ?? null,
     counts: {},
     github: full ? `https://github.com/${full}` : null,
     stack: p.stack || [],

@@ -46,13 +46,18 @@ export function createArchive(host, themes, { stats = {}, thumbs = {}, current =
       button.type = "button";
       button.setAttribute("aria-label", `${theme.name}. ${theme.description}.${theme.included ? " Ships with Omarchy." : ""}`);
       button.setAttribute("aria-pressed", "false");
-      const img = make("img");
-      img.src = thumbs[theme.slug] || theme.image;
-      img.alt = "";
-      img.loading = "lazy";
-      img.decoding = "async";
-      img.width = 640;
-      img.height = 360;
+      const shot = make("span", "arc-shot");
+      const src = thumbs[theme.slug] || theme.image;
+      if (src) {
+        const img = make("img");
+        img.src = src;
+        img.alt = "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.width = 640;
+        img.height = 360;
+        shot.append(img);
+      }
       const meta = make("span", "arc-meta");
       meta.append(make("span", "arc-name", theme.name));
       if (data) {
@@ -67,8 +72,6 @@ export function createArchive(host, themes, { stats = {}, thumbs = {}, current =
         swatches.append(chip);
       }
       if (theme.note) swatches.append(make("span", "arc-note", theme.note));
-      const shot = make("span", "arc-shot");
-      shot.append(img);
       if (theme.included) {
         const badge = make("span", "arc-badge");
         badge.setAttribute("aria-hidden", "true");

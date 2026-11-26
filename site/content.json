@@ -1,271 +1,514 @@
 {
- "owner": "alexrivera",
- "fetchedAt": "2026-11-25T09:11:39.315Z",
+ "owner": "faizalarsalan",
+ "fetchedAt": "2026-11-26T15:45:08.856Z",
  "about": {
-  "repo": "alexrivera",
+  "repo": "faizalarsalan",
   "lines": [
-   "# Alex Rivera",
+   "# Faiz Arsalan",
    "",
-   "Systems and full-stack engineer building developer tools, distributed storage engines, and open-source software.",
+   "Shopify & eCommerce developer with 2+ years building high-converting D2C storefronts in Liquid, JavaScript, TypeScript, and CRO systems — founder of BrandBear Studio.",
    "",
-   "San Francisco · Open Source",
+   "Bangalore, India · BrandBear Studio",
    "",
-   "[GitHub](https://github.com/alexrivera)",
-   "[LinkedIn](https://www.linkedin.com/in/alexrivera)",
-   "[X / Twitter](https://x.com/alexrivera)",
-   "[Blog](https://alexrivera.dev/blog)"
+   "[GitHub](https://github.com/faizalarsalan)",
+   "[LinkedIn](https://www.linkedin.com/in/faiz-arsalan-16a856192)",
+   "[BrandBear](https://brandbear.vercel.app/)",
+   "[WhatsApp](https://wa.me/918789633034)"
   ]
  },
  "projects": [
   {
-   "repo": "pulsedb",
-   "url": "https://github.com/alexrivera/pulsedb",
-   "description": "An embedded time-series storage engine written in Rust with sub-millisecond range queries and vectorized compression.",
-   "tag": "Database · Rust",
+   "repo": "predator-perfume",
+   "url": "https://predatorperfume.com",
+   "description": "Luxury single-product Shopify storefront for a 1M+ influencer audience — 3.7% CVR (2x avg) and sub-2s load.",
+   "tag": "Shopify · Luxury D2C",
    "stars": null,
-   "language": "Rust",
-   "pushed": null,
+   "language": "Shopify",
+   "pushed": "2025-02-01",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2024-06-01",
    "branch": "main",
    "commits": null,
    "files": null,
    "counts": {},
-   "github": "https://github.com/alexrivera/pulsedb",
+   "github": null,
    "stack": [
-    "Rust",
-    "SQLite",
-    "WebAssembly",
-    "TypeScript"
+    "Shopify",
+    "Liquid",
+    "JavaScript",
+    "Playwright",
+    "CRO"
    ],
    "images": [
     {
-     "file": "shots/project-1.svg",
-     "source": "shots/project-1.svg",
-     "alt": "PulseDB screenshot 1",
+     "file": "shots/predator-perfume.svg",
+     "source": "shots/predator-perfume.svg",
+     "alt": "Predator Perfume screenshot 1",
      "xray": false
     }
    ],
    "lines": [
-    "# PulseDB",
+    "# Predator Perfume",
     "",
     "\u0001IMG0\u0001",
     "",
-    "### An embedded time-series storage engine written in Rust with sub-millisecond range queries and vectorized compression.",
+    "### Luxury single-product Shopify storefront for a 1M+ influencer audience — 3.7% CVR (2x avg) and sub-2s load.",
     "",
-    "PulseDB is a lightweight embedded time-series database designed for edge",
-    "telemetry and local developer metrics. It features gorilla-style delta",
-    "encoding, memory-mapped segment files, and a zero-allocation query iterator.",
+    "Built a custom-coded single-product luxury fragrance storefront for creator",
+    "Sarthak Goel (1M+ followers). Combined dark editorial scroll storytelling,",
+    "impulse-confidence checkout, and Playwright post-launch regression testing",
+    "to reach 3.7% conversion rate.",
     "",
-    "Built with Rust · SQLite · WebAssembly · TypeScript",
+    "Built with Shopify · Liquid · JavaScript · Playwright · CRO",
     "",
-    "[Visit](https://github.com/alexrivera/pulsedb)"
+    "[Visit](https://predatorperfume.com)"
    ]
   },
   {
-   "repo": "termflow",
-   "url": "https://github.com/alexrivera/termflow",
-   "description": "A fast terminal multiplexer and task runner with live dependency graphs and structured log filtering.",
-   "tag": "CLI · Go",
+   "repo": "ethnic-story",
+   "url": "https://ethnicstory.shop",
+   "description": "Custom Shopify sections and CRO redesign — Deal of the Week via AJAX Product API, cart drawer, and trust bars.",
+   "tag": "Storefront · CRO",
    "stars": null,
-   "language": "Go",
-   "pushed": null,
+   "language": "Shopify",
+   "pushed": "2025-01-15",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2024-08-01",
    "branch": "main",
    "commits": null,
    "files": null,
    "counts": {},
-   "github": "https://github.com/alexrivera/termflow",
+   "github": null,
    "stack": [
-    "Go",
-    "Terminal",
-    "Docker",
-    "Linux"
+    "Shopify",
+    "Liquid",
+    "JavaScript",
+    "CSS",
+    "Klaviyo"
    ],
    "images": [
     {
-     "file": "shots/project-2.svg",
-     "source": "shots/project-2.svg",
-     "alt": "TermFlow screenshot 1",
+     "file": "shots/ethnic-story.svg",
+     "source": "shots/ethnic-story.svg",
+     "alt": "Ethnic Story screenshot 1",
      "xray": false
     }
    ],
    "lines": [
-    "# TermFlow",
+    "# Ethnic Story",
     "",
     "\u0001IMG0\u0001",
     "",
-    "### A fast terminal multiplexer and task runner with live dependency graphs and structured log filtering.",
+    "### Custom Shopify sections and CRO redesign — Deal of the Week via AJAX Product API, cart drawer, and trust bars.",
     "",
-    "TermFlow orchestrates local microservices and build pipelines from a single",
-    "declarative manifest. It streams colorized output, detects port conflicts",
-    "automatically, and exports execution timelines.",
+    "Developed custom Liquid sections and snippets including Deal of the Week",
+    "powered by the AJAX Product API, an auto-scrolling icon bar, floral",
+    "collection page UI, and Behold.so Instagram feed alongside variant picker,",
+    "return policy modal in main-product.liquid, and cart drawer CRO upgrades.",
     "",
-    "Built with Go · Terminal · Docker · Linux",
+    "Built with Shopify · Liquid · JavaScript · CSS · Klaviyo",
     "",
-    "[Visit](https://github.com/alexrivera/termflow)"
+    "[Visit](https://ethnicstory.shop)"
    ]
   },
   {
-   "repo": "tracekit",
-   "url": "https://github.com/alexrivera/tracekit",
-   "description": "Zero-overhead OpenTelemetry trace viewer that runs entirely in the browser from JSONL trace dumps.",
-   "tag": "Observability · TypeScript",
+   "repo": "sarlaxmi",
+   "url": "https://brandbear.vercel.app/#brands",
+   "description": "Full Shopify storefront build on Platina theme — custom Liquid sections, AJAX integrations, and Judge.me reviews.",
+   "tag": "Full Build · Platina",
+   "stars": null,
+   "language": "Shopify",
+   "pushed": "2024-12-10",
+   "forks": null,
+   "watchers": null,
+   "issues": null,
+   "license": null,
+   "created": "2024-04-01",
+   "branch": "main",
+   "commits": null,
+   "files": null,
+   "counts": {},
+   "github": null,
+   "stack": [
+    "Shopify",
+    "Liquid",
+    "JavaScript",
+    "HTML",
+    "CSS"
+   ],
+   "images": [
+    {
+     "file": "shots/sarlaxmi.svg",
+     "source": "shots/sarlaxmi.svg",
+     "alt": "Sarlaxmi screenshot 1",
+     "xray": false
+    }
+   ],
+   "lines": [
+    "# Sarlaxmi",
+    "",
+    "\u0001IMG0\u0001",
+    "",
+    "### Full Shopify storefront build on Platina theme — custom Liquid sections, AJAX integrations, and Judge.me reviews.",
+    "",
+    "Delivered an end-to-end D2C storefront build on the Platina theme from",
+    "initial theme setup through staging QA and launch, featuring custom Liquid",
+    "sections, AJAX product cards, Judge.me and metafield reviews, and conversion",
+    "trust bars.",
+    "",
+    "Built with Shopify · Liquid · JavaScript · HTML · CSS",
+    "",
+    "[Visit](https://brandbear.vercel.app/#brands)"
+   ]
+  },
+  {
+   "repo": "supreem-superfoods",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "CRO-first Shopify launch store delivering +25% revenue lift and 18% subscription rate with cart upsells.",
+   "tag": "Health D2C · CRO",
+   "stars": null,
+   "language": "Shopify",
+   "pushed": "2024-11-20",
+   "forks": null,
+   "watchers": null,
+   "issues": null,
+   "license": null,
+   "created": "2024-02-01",
+   "branch": "main",
+   "commits": null,
+   "files": null,
+   "counts": {},
+   "github": null,
+   "stack": [
+    "Shopify",
+    "Liquid",
+    "CRO",
+    "JavaScript",
+    "CSS"
+   ],
+   "images": [
+    {
+     "file": "shots/supreem-superfoods.svg",
+     "source": "shots/supreem-superfoods.svg",
+     "alt": "Supreem Superfoods screenshot 1",
+     "xray": false
+    }
+   ],
+   "lines": [
+    "# Supreem Superfoods",
+    "",
+    "\u0001IMG0\u0001",
+    "",
+    "### CRO-first Shopify launch store delivering +25% revenue lift and 18% subscription rate with cart upsells.",
+    "",
+    "Engineered a conversion-focused health and nutrition launch store with",
+    "ingredient science proof architecture across scroll depths and a cart",
+    "subscription upsell flow, reducing bounce rate and achieving +25% revenue",
+    "lift above launch projection.",
+    "",
+    "Built with Shopify · Liquid · CRO · JavaScript · CSS",
+    "",
+    "[Visit](https://brandbear.vercel.app/#work)"
+   ]
+  },
+  {
+   "repo": "ashiya-makeover",
+   "url": "https://github.com/faizalarsalan/ashiya-makeover",
+   "description": "Full-stack Next.js and TypeScript brand booking experience with interactive wedding offer calculator and galleries.",
+   "tag": "Next.js · TypeScript",
    "stars": null,
    "language": "TypeScript",
-   "pushed": null,
+   "pushed": "2026-11-24",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2026-11-24",
    "branch": "main",
-   "commits": null,
-   "files": null,
+   "commits": 10,
+   "files": 41,
    "counts": {},
-   "github": "https://github.com/alexrivera/tracekit",
+   "github": "https://github.com/faizalarsalan/ashiya-makeover",
    "stack": [
     "TypeScript",
+    "Next.js",
     "React",
-    "Canvas",
-    "OpenTelemetry"
+    "CSS"
    ],
-   "images": [],
+   "images": [
+    {
+     "file": "shots/ashiya-makeover.svg",
+     "source": "shots/ashiya-makeover.svg",
+     "alt": "Ashiya Makeover screenshot 1",
+     "xray": false
+    }
+   ],
    "lines": [
-    "# TraceKit",
+    "# Ashiya Makeover",
     "",
+    "\u0001IMG0\u0001",
     "",
-    "### Zero-overhead OpenTelemetry trace viewer that runs entirely in the browser from JSONL trace dumps.",
+    "### Full-stack Next.js and TypeScript brand booking experience with interactive wedding offer calculator and galleries.",
     "",
-    "TraceKit lets engineers inspect distributed traces locally without spinning",
-    "up heavy observability backends. Drop a trace file into the browser and",
-    "inspect flamegraphs, critical paths, and span attributes.",
+    "Built a Next.js and TypeScript brand website featuring an interactive",
+    "wedding package and discount walkthrough calculator, before-and-after",
+    "showcases, Instagram gallery, reviews, and structured WhatsApp booking",
+    "summary generation.",
     "",
-    "Built with TypeScript · React · Canvas · OpenTelemetry",
+    "Built with TypeScript · Next.js · React · CSS",
     "",
-    "[Visit](https://github.com/alexrivera/tracekit)"
+    "[Visit](https://github.com/faizalarsalan/ashiya-makeover)"
    ]
   },
   {
-   "repo": "schemasync",
-   "url": "https://github.com/alexrivera/schemasync",
-   "description": "Automated database migration validator that catches breaking schema changes and missing indexes in CI.",
-   "tag": "Tooling · Python",
+   "repo": "bitamin-naturals",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "Trust-first wellness CRO rebuild achieving +25% AOV and +33% repeat rate via product-page bundle flows.",
+   "tag": "Wellness · AOV System",
    "stars": null,
-   "language": "Python",
-   "pushed": null,
+   "language": "Shopify",
+   "pushed": "2024-09-01",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2023-11-01",
    "branch": "main",
    "commits": null,
    "files": null,
    "counts": {},
-   "github": "https://github.com/alexrivera/schemasync",
+   "github": null,
    "stack": [
-    "Python",
-    "PostgreSQL",
-    "GitHub Actions"
+    "Shopify",
+    "CRO",
+    "Liquid",
+    "JavaScript"
    ],
-   "images": [],
+   "images": [
+    {
+     "file": "shots/bitamin-naturals.svg",
+     "source": "shots/bitamin-naturals.svg",
+     "alt": "Bitamin Naturals screenshot 1",
+     "xray": false
+    }
+   ],
    "lines": [
-    "# SchemaSync",
+    "# Bitamin Naturals",
     "",
+    "\u0001IMG0\u0001",
     "",
-    "### Automated database migration validator that catches breaking schema changes and missing indexes in CI.",
+    "### Trust-first wellness CRO rebuild achieving +25% AOV and +33% repeat rate via product-page bundle flows.",
     "",
-    "SchemaSync parses SQL and ORM migrations in pull requests, simulates lock",
-    "contention against production table statistics, and posts actionable safety",
-    "reports.",
+    "Rebuilt the storefront around lab certification displays, traceable",
+    "ingredient sourcing transparency, educational breakdowns, and a product-page",
+    "bundle recommendation engine.",
     "",
-    "Built with Python · PostgreSQL · GitHub Actions",
+    "Built with Shopify · CRO · Liquid · JavaScript",
     "",
-    "[Visit](https://github.com/alexrivera/schemasync)"
+    "[Visit](https://brandbear.vercel.app/#work)"
    ]
   },
   {
-   "repo": "minikv",
-   "url": "https://github.com/alexrivera/minikv",
-   "description": "A minimal Raft-backed key-value store built to explore consensus algorithms and deterministic simulation testing.",
-   "tag": "Storage · C",
+   "repo": "adam-spirit",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "Dark-palette Shopify redesign with product video storytelling and gift-set upsells (+28% CVR lift in 60 days).",
+   "tag": "Fragrance · Redesign",
    "stars": null,
-   "language": "C",
-   "pushed": null,
+   "language": "Shopify",
+   "pushed": "2024-06-15",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2023-08-01",
    "branch": "main",
    "commits": null,
    "files": null,
    "counts": {},
-   "github": "https://github.com/alexrivera/minikv",
+   "github": null,
    "stack": [
-    "C",
-    "Networking",
-    "Raft"
+    "Shopify",
+    "Liquid",
+    "CRO",
+    "CSS"
    ],
    "images": [],
    "lines": [
-    "# MiniKV",
+    "# Adam Spirit",
     "",
     "",
-    "### A minimal Raft-backed key-value store built to explore consensus algorithms and deterministic simulation testing.",
+    "### Dark-palette Shopify redesign with product video storytelling and gift-set upsells (+28% CVR lift in 60 days).",
     "",
-    "MiniKV implements leader election, log replication, and snapshot compaction",
-    "in under 2,000 lines of C with a deterministic network simulator.",
+    "Redesigned a generic theme into a dark editorial Shopify storefront",
+    "featuring immersive product video sections, ingredient storytelling, and",
+    "gift-set checkout upsell flows driving +28% CVR lift and +22% revenue.",
     "",
-    "Built with C · Networking · Raft",
+    "Built with Shopify · Liquid · CRO · CSS",
     "",
-    "[Visit](https://github.com/alexrivera/minikv)"
+    "[Visit](https://brandbear.vercel.app/#work)"
    ]
   },
   {
-   "repo": "dotfiles",
-   "url": "https://github.com/alexrivera/dotfiles",
-   "description": "Modular Neovim, Fish shell, and tmux configuration tuned for fast keyboard-driven development.",
-   "tag": "Config · Neovim",
+   "repo": "white-muds",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "Typography-led organic skincare storefront with ingredient spotlights (+19% CVR, +27% return rate).",
+   "tag": "Skincare · Editorial",
    "stars": null,
-   "language": "Lua",
-   "pushed": null,
+   "language": "Shopify",
+   "pushed": "2024-03-20",
    "forks": null,
    "watchers": null,
    "issues": null,
    "license": null,
-   "created": null,
+   "created": "2023-05-01",
    "branch": "main",
    "commits": null,
    "files": null,
    "counts": {},
-   "github": "https://github.com/alexrivera/dotfiles",
+   "github": null,
    "stack": [
-    "Lua",
-    "Neovim",
-    "Shell"
+    "Shopify",
+    "Liquid",
+    "HTML",
+    "CSS"
    ],
    "images": [],
    "lines": [
-    "# Dotfiles",
+    "# White Muds",
     "",
     "",
-    "### Modular Neovim, Fish shell, and tmux configuration tuned for fast keyboard-driven development.",
+    "### Typography-led organic skincare storefront with ingredient spotlights (+19% CVR, +27% return rate).",
     "",
-    "Cross-platform terminal environment with custom Lua plugins, minimal LSP",
-    "setup, and synchronized color palettes.",
+    "Built an editorial organic beauty storefront with custom section layouts,",
+    "ingredient spotlights, and buyer-perspective benefit copy.",
     "",
-    "Built with Lua · Neovim · Shell",
+    "Built with Shopify · Liquid · HTML · CSS",
     "",
-    "[Visit](https://github.com/alexrivera/dotfiles)"
+    "[Visit](https://brandbear.vercel.app/#work)"
+   ]
+  },
+  {
+   "repo": "mayura-group",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "Corporate real estate showcase and multi-step pre-qualifying enquiry funnel achieving 4x lead volume in 60 days.",
+   "tag": "Real Estate · Lead Gen",
+   "stars": null,
+   "language": "JavaScript",
+   "pushed": "2024-01-10",
+   "forks": null,
+   "watchers": null,
+   "issues": null,
+   "license": null,
+   "created": "2023-02-01",
+   "branch": "main",
+   "commits": null,
+   "files": null,
+   "counts": {},
+   "github": null,
+   "stack": [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "CRO"
+   ],
+   "images": [],
+   "lines": [
+    "# Mayura Group",
+    "",
+    "",
+    "### Corporate real estate showcase and multi-step pre-qualifying enquiry funnel achieving 4x lead volume in 60 days.",
+    "",
+    "Designed and coded a corporate brand website with immersive property render",
+    "galleries, developer credentials, and a multi-step pre-qualifying lead",
+    "enquiry funnel.",
+    "",
+    "Built with JavaScript · HTML · CSS · CRO",
+    "",
+    "[Visit](https://brandbear.vercel.app/#work)"
+   ]
+  },
+  {
+   "repo": "bm-glasstech",
+   "url": "https://brandbear.vercel.app/#work",
+   "description": "B2B manufacturing product catalogue, spec pages, and structured RFQ funnel driving 3x B2B leads in under 3 months.",
+   "tag": "Industrial · B2B",
+   "stars": null,
+   "language": "JavaScript",
+   "pushed": "2023-10-05",
+   "forks": null,
+   "watchers": null,
+   "issues": null,
+   "license": null,
+   "created": "2022-11-01",
+   "branch": "main",
+   "commits": null,
+   "files": null,
+   "counts": {},
+   "github": null,
+   "stack": [
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "CRO"
+   ],
+   "images": [],
+   "lines": [
+    "# BM Glasstech",
+    "",
+    "",
+    "### B2B manufacturing product catalogue, spec pages, and structured RFQ funnel driving 3x B2B leads in under 3 months.",
+    "",
+    "Built a full B2B product catalogue website with technical specification",
+    "pages, certifications and compliance displays, structured RFQ enquiry",
+    "funnel, and high-intent manufacturer SEO.",
+    "",
+    "Built with JavaScript · HTML · CSS · CRO",
+    "",
+    "[Visit](https://brandbear.vercel.app/#work)"
+   ]
+  },
+  {
+   "repo": "shopify-ui",
+   "url": "https://github.com/faizalarsalan/shopify--ui",
+   "description": "Component-driven React and Vite storefront UI prototype with card, navbar, and sideboard layouts.",
+   "tag": "React · Vite",
+   "stars": null,
+   "language": "JavaScript",
+   "pushed": "2026-09-29",
+   "forks": null,
+   "watchers": null,
+   "issues": null,
+   "license": null,
+   "created": "2026-09-27",
+   "branch": "main",
+   "commits": 3,
+   "files": 332,
+   "counts": {},
+   "github": "https://github.com/faizalarsalan/shopify--ui",
+   "stack": [
+    "JavaScript",
+    "React",
+    "CSS"
+   ],
+   "images": [],
+   "lines": [
+    "# Shopify UI",
+    "",
+    "",
+    "### Component-driven React and Vite storefront UI prototype with card, navbar, and sideboard layouts.",
+    "",
+    "Modular React and Vite UI exploration featuring custom card, navbar, and",
+    "sideboard storefront interface components.",
+    "",
+    "Built with JavaScript · React · CSS",
+    "",
+    "[Visit](https://github.com/faizalarsalan/shopify--ui)"
    ]
   }
  ],
@@ -604,83 +847,57 @@
  },
  "work": [
   {
-   "when": "06/2024 – present",
-   "title": "Senior Systems Engineer",
-   "org": "CloudScale",
-   "where": "San Francisco · Hybrid",
-   "desc": "Leading the distributed query execution engine and low-latency telemetry pipeline in Rust and Go.",
-   "url": "https://example.com/cloudscale"
+   "when": "2022 – present",
+   "title": "Founder & Lead Developer",
+   "org": "BrandBear Studio",
+   "where": "Bangalore, India",
+   "desc": "Building custom Shopify themes, CRO-engineered product funnels, and full-stack brand websites — 27+ brands launched across D2C, luxury, real estate, and B2B.",
+   "url": "https://brandbear.vercel.app/"
   },
   {
-   "when": "03/2022 – 05/2024",
-   "title": "Software Engineer",
-   "org": "DevFlow",
-   "where": "Remote",
-   "desc": "Built CLI developer tooling, local sandbox runtimes, and real-time build log streaming for 50k+ engineers.",
-   "url": "https://example.com/devflow"
+   "when": "2024 – 2025",
+   "title": "Shopify Developer",
+   "org": "Launch Lions",
+   "where": "Agency · Remote",
+   "desc": "Built and shipped end-to-end Shopify storefronts for Sarlaxmi, Predator Perfume, and Ethnic Story using Liquid, JS, AJAX Product API, Klaviyo, Judge.me, and Playwright E2E QA."
   },
   {
-   "when": "01/2021 – present",
-   "title": "Core Maintainer",
-   "org": "OpenTrace",
-   "where": "Open source",
-   "desc": "Maintaining open-source distributed tracing SDKs and terminal visualization tools.",
-   "url": "https://github.com/alexrivera"
-  },
-  {
-   "when": "05/2020 – 08/2020",
-   "title": "Open Source Fellow",
-   "org": "SystemsLab",
-   "where": "Remote",
-   "desc": "Implemented zero-copy serialization primitives and benchmarked memory-mapped storage formats."
+   "when": "2021 – 2024",
+   "title": "Diploma in CS Engineering",
+   "org": "Al-Kabir Polytechnic",
+   "where": "Ranchi, India",
+   "desc": "Completed Diploma in Computer Science Engineering with a foundation in web engineering, databases, and software systems."
   }
  ],
- "talks": [
-  {
-   "name": "Systems Conf",
-   "place": "San Francisco, USA",
-   "when": "Oct 2025",
-   "lat": 37.77,
-   "lon": -122.41,
-   "desc": "Building deterministic simulation harnesses for storage engines — catching race conditions before production.",
-   "url": "https://example.com/talk-1",
-   "photos": []
-  },
-  {
-   "name": "Open Source Summit",
-   "place": "London, UK",
-   "when": "May 2024",
-   "lat": 51.51,
-   "lon": -0.13,
-   "desc": "Designing zero-dependency developer tools that run fast on every platform.",
-   "url": "https://example.com/talk-2",
-   "photos": []
-  }
- ],
+ "talks": [],
  "links": [
   {
    "label": "Email",
-   "url": "mailto:hello@alexrivera.dev"
+   "url": "mailto:faizalarsalan2003@gmail.com"
   },
   {
    "label": "GitHub",
-   "url": "https://github.com/alexrivera"
+   "url": "https://github.com/faizalarsalan"
   },
   {
    "label": "LinkedIn",
-   "url": "https://www.linkedin.com/in/alexrivera"
+   "url": "https://www.linkedin.com/in/faiz-arsalan-16a856192"
   },
   {
-   "label": "X / Twitter",
-   "url": "https://x.com/alexrivera"
+   "label": "BrandBear",
+   "url": "https://brandbear.vercel.app/"
   },
   {
-   "label": "Blog",
-   "url": "https://alexrivera.dev/blog"
+   "label": "WhatsApp",
+   "url": "https://wa.me/918789633034"
   }
  ],
  "more": [
-  "minikv",
-  "dotfiles"
+  "bitamin-naturals",
+  "adam-spirit",
+  "white-muds",
+  "mayura-group",
+  "bm-glasstech",
+  "shopify-ui"
  ]
 }
